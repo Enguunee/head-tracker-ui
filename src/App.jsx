@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './style.css'
+import * as THREE from 'three'
+import { Canvas } from '@react-three/fiber'
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -37,7 +39,9 @@ function App() {
         </div>
 
         <ul className="sidebar-links">
-          <li><a href="#live" onClick={() => setShowSidebar(false)}>Live Monitoring</a></li>
+          <li>
+            <a href="#live" onClick={() => setShowSidebar(false)}>Live Monitoring</a>
+          </li>
           <li><a href="#metrics" onClick={() => setShowSidebar(false)}>Data Metrics</a></li>
           <li><a href="#details" onClick={() => setShowSidebar(false)}>System Details</a></li>
           <li><a href="#limitations" onClick={() => setShowSidebar(false)}>Limitations</a></li>
@@ -50,6 +54,16 @@ function App() {
         <section id="live" className="section-card">
           <h2>Live Monitoring</h2>
           <p>Real-time head position and movement status will go here.</p>
+          <div id="canvas-container">
+              <Canvas>
+                <mesh>
+                  <boxGeometry args={[2, 2, 2]} />
+                  <meshPhongMaterial />
+                </mesh>
+                <ambientLight intensity={0.1} />
+                <directionalLight position={[0, 0, 5]} color="red" />
+              </Canvas>
+            </div>
         </section>
 
         <section id="metrics" className="section-card">
