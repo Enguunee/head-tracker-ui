@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import './style.css'
-
+import { Renderer } from './Renderer.jsx'
+import FileUpload from './components/FileUpload'
 function App() {
   const [showSidebar, setShowSidebar] = useState(false)
+  // const [mousePosX, mousePosY] = useState(0)
+
 
   return (
     <>
@@ -37,7 +40,9 @@ function App() {
         </div>
 
         <ul className="sidebar-links">
-          <li><a href="#live" onClick={() => setShowSidebar(false)}>Live Monitoring</a></li>
+          <li>
+            <a href="#live" onClick={() => setShowSidebar(false)}>Live Monitoring</a>
+          </li>
           <li><a href="#metrics" onClick={() => setShowSidebar(false)}>Data Metrics</a></li>
           <li><a href="#details" onClick={() => setShowSidebar(false)}>System Details</a></li>
           <li><a href="#limitations" onClick={() => setShowSidebar(false)}>Limitations</a></li>
@@ -50,11 +55,15 @@ function App() {
         <section id="live" className="section-card">
           <h2>Live Monitoring</h2>
           <p>Real-time head position and movement status will go here.</p>
+          <div id="canvas-container">
+              <Renderer />
+            </div>
         </section>
 
         <section id="metrics" className="section-card">
           <h2>Data Metrics</h2>
-          <p>Charts, posture stats, and session summaries will go here.</p>
+          <p>Upload recorded sensor data to begin analysis.</p>
+          <FileUpload />
         </section>
 
         <section id="details" className="section-card">
