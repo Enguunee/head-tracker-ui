@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './style.css'
 import { Renderer } from './Renderer.jsx'
+import FileUpload from './components/FileUpload'
 function App() {
   const [showSidebar, setShowSidebar] = useState(false)
   // const [mousePosX, mousePosY] = useState(0)
@@ -61,7 +62,8 @@ function App() {
 
         <section id="metrics" className="section-card">
           <h2>Data Metrics</h2>
-          <p>Charts, posture stats, and session summaries will go here.</p>
+          <p>Upload recorded sensor data to begin analysis.</p>
+          <FileUpload />
         </section>
 
         <section id="details" className="section-card">
