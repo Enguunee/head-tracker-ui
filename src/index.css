@@ -66,3 +66,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.my-linkedin {
+  color: #0a66c2;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+/* underline that animates in */
+.my-linkedin::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #0a66c2;
+  transition: width 0.3s ease;
+}
+
+.my-linkedin:hover {
+  color: #084b94;
+  transform: translateY(-1px);
+}
+
+.my-linkedin:hover::after {
+  width: 100%;
+}
